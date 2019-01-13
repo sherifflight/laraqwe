@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Page
  *
+ * @property integer id
  * @package App\Models
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newModelQuery()
@@ -33,7 +34,7 @@ class Page extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['page_name', 'title', 'text'];
 
     /**
      * The attributes that should be hidden for arrays.
