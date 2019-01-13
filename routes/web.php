@@ -44,5 +44,16 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () 
 
             Route::post('stores-select', 'UsersController@storesSelect')->name('dashboard.users.storesSelect');
         });
+
+        Route::group(['prefix' => 'pages', 'middleware' => 'can.access:pages'], function () {
+
+            Route::get('/', 'PagesController@index')->name('dashboard.pages.index');
+
+            Route::group(['middleware' => 'can.modify:pages'], function () {
+
+                Route::get('{id}/edit', 'PagesController@edit')->name('dashboard.pages.edit');
+                Route::post('{id}/edit', 'PagesController@update')->name('dashboard.pages.update');
+            });
+        });
     });
 });

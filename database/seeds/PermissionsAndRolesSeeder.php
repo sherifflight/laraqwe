@@ -25,6 +25,7 @@ class PermissionsAndRolesSeeder extends Seeder
             $rolesTree = [
                 Role::ROOT => [
                     Permission::VIEW_USERS, Permission::MODIFY_USERS,
+                    Permission::VIEW_PAGES, Permission::MODIFY_PAGES
                 ],
                 Role::ADMIN => [
                     Permission::VIEW_USERS
