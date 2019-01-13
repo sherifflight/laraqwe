@@ -15,19 +15,19 @@ class PageRepository extends BaseRepository implements RepositoryInterface
     /**
      * @param string $pageName
      * @param string $title
-     * @param string $text
+     * @param string $content
      * @return Page|null
      * @throws \App\Exceptions\RepositoryException
      */
     public function createBulky(
         string $pageName,
         string $title,
-        string $text
+        string $content
     ) : ?Page {
         return $this->create([
             'page_name' => $pageName,
             'title' => $title,
-            'text' => $text
+            'content' => $content
         ]);
     }
 
@@ -35,7 +35,7 @@ class PageRepository extends BaseRepository implements RepositoryInterface
      * @param Page $page
      * @param string $pageName
      * @param string $title
-     * @param string $text
+     * @param string $content
      * @return Page|null
      * @throws \App\Exceptions\RepositoryException
      */
@@ -43,12 +43,12 @@ class PageRepository extends BaseRepository implements RepositoryInterface
         Page $page,
         string $pageName,
         string $title,
-        string $text
+        string $content
     ) : ?Page {
         $data = [
             'page_name' => $pageName,
             'title' => $title,
-            'text' => $text
+            'content' => $content
         ];
 
         return $this->update($data, $page->id);
