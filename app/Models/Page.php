@@ -7,7 +7,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Page
+ *
  * @package App\Models
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Page onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page query()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Page withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Page withoutTrashed()
+ * @mixin \Eloquent
  */
 class Page extends Model
 {
