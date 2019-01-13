@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Requests\Dashboard\Users\StoreRequest;
-use App\Http\Requests\Dashboard\Users\UpdateRequest;
-use App\Repositories\Permission\UserRepository;
-use App\Repositories\RoleRepository;
+use App\Http\Requests\Dashboard\Pages\UpdateRequest;
+use App\Repositories\Permission\PageRepository;
 
 class PagesController extends BaseController
 {
     /**
-     * @param UserRepository $userRepository
+     * @param PageRepository $pageRepository
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \App\Exceptions\RepositoryException
      */
@@ -25,51 +23,50 @@ class PagesController extends BaseController
 
     /**
      * @param int $id
-     * @param UserRepository $userRepository
-     * @param RoleRepository $roleRepository
-     * @return UsersController|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @param PageRepository $pageRepository
+     * @return PagesController|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      * @throws \App\Exceptions\RepositoryException
      */
-    public function edit(int $id, UserRepository $userRepository, RoleRepository $roleRepository)
+    public function edit(int $id, PageRepository $pageRepository)
     {
-        $user = $userRepository->findForUser($id, $this->getUser());
+        $page = $pageRepository->findForUser($id, $this->getUser());
 
-        if ($user === null) {
-            return $this->error('Не удалось найти пользователя.');
+        if ($page === null) {
+            return $this->error('Не удалось найти страницу.');
         }
 
-        return view('dashboard.users.edit', [
-            'item'    => $user,
+        return view('dashboard.pages.edit', [
+            'item'    => $page,
         ]);
     }
 
     /**
      * @param int $id
      * @param UpdateRequest $updateRequest
-     * @param UserRepository $userRepository
-     * @return UsersController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @param PageRepository $pageRepository
+     * @return PagesController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      * @throws \App\Exceptions\RepositoryException
      */
     public function update(
-        int $id, UpdateRequest $updateRequest, UserRepository $userRepository
+        int $id, UpdateRequest $updateRequest, PageRepository $pageRepository
     ) {
-        $user = $userRepository->findForUser($id, $this->getUser());
+        $page = $pageRepository->findForUser($id, $this->getUser());
 
-        if ($user === null) {
-            return $this->error('Не удалось найти пользователя.');
+        if ($page === null) {
+            return $this->error('Не удалось найти страницу.');
         }
 
-        $user = $userRepository->updateBulky(
-            $user,
-            $updateRequest->input('email'),
-            $updateRequest->input('password'),
-            $updateRequest->input('name')
+        $page = $pageRepository->updateBulky(
+            $page,
+            $updateRequest->input('page_name'),
+            $updateRequest->input('title'),
+            $updateRequest->input('content')
         );
 
-        if ($user === null) {
-            return $this->error('Не удалось обновить пользователя.');
+        if ($page === null) {
+            return $this->error('Не удалось обновить страницу.');
         }
 
-        return $this->success('Администратор был успешно обновлен.');
+        return $this->success('Страница была успешно обновлена.');
     }
 }
