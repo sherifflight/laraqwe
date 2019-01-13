@@ -31,7 +31,7 @@ class Page extends Model
      *
      * @var array
      */
-    protected $fillable = ['page_name', 'title', 'text'];
+    protected $fillable = ['page_name', 'title', 'content'];
 
     /**
      * The attributes that should be hidden for arrays.

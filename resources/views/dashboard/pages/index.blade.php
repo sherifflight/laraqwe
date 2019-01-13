@@ -19,8 +19,9 @@
         <table data-sort-column="0" data-sort-order="asc" class="datatable table table-hover no-footer" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Имя</th>
-                    <th>Email</th>
+                    <th>Id</th>
+                    <th>Индекс</th>
+                    <th>Название</th>
                     <th>Дата создания</th>
                     <th></th>
                 </tr>
@@ -29,11 +30,12 @@
 
             @foreach($items as $item)
                 @php
-                    /** @var \App\Models\User $item */
+                    /** @var \App\Models\Page $item */
                 @endphp
                 <tr>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->page_name }}</td>
+                    <td>{{ $item->title }}</td>
                     <td>{{ $item->created_at }}</td>
                     <td>
                         @if(canedit('pages', $item->id, $user))

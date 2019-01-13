@@ -2,21 +2,17 @@
 
 @section('breadcrumb')
     @include('dashboard.layouts.partials.breadcrumb', ['links' => [
-        'Список пользователей' => route('dashboard.users.index')
+        'Список страниц' => route('dashboard.pages.index')
     ]])
 @stop
 
-@php /** @var \App\Models\User $item **/ @endphp
-@section('title', 'Изменение пользователя ' . $item->name)
+@php /** @var \App\Models\Page $item **/ @endphp
+@section('title', 'Изменение страницы с id ' . $item->id)
 
 @section('fields')
-    @include('dashboard.users.fields')
+    @include('dashboard.pages.fields')
 @stop
 
 @section('back-link')
-    {{ route('dashboard.users.index') }}
+    {{ route('dashboard.pages.index') }}
 @stop
-
-@push('scripts')
-    @include('dashboard.users.scripts')
-@endpush
