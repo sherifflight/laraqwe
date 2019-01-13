@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Front'], function () {
+
+    Route::get('/', 'MainController@index')->name('front');
 });
 
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {

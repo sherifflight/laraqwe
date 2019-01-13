@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Page
  *
  * @property int $id
+ * @property string $content
  * @package App\Models
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newModelQuery()
