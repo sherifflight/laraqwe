@@ -1,4 +1,8 @@
 @php /** @var \App\Models\Page $item */ @endphp
+
+<script src="{{ asset('assets/dashboard/js/summernote.js') }}" type="text/javascript" charset="utf-8" ></script>
+<script rel="stylesheet" src="{{ asset('assets/dashboard/css/summernote.css') }}" type="text/css" charset="utf-8" ></script>
+
 <div class="row">
     <div class="col-md-7">
         <div class="card card-default">
@@ -22,6 +26,10 @@
                     'placeholder' => 'Введите заголовок страницы.'
                 ])
             </div>
+        </div>
+    </div>
+    <div>
+        <div class="card card-default">
             <div class="card-block">
                 @include('dashboard.layouts.partials.forms.textarea', [
                     'title' => 'Content',

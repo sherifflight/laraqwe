@@ -16,3 +16,7 @@
 @section('back-link')
     {{ route('dashboard.pages.index') }}
 @stop
+
+@push('scripts')
+    @include('dashboard.pages.scripts')
+@endpush
