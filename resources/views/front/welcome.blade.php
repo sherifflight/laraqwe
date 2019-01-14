@@ -27,6 +27,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('front.request.create') }}">Send request</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard.login') }}">Dashboard</a>
                         </li>
                     </ul>
