@@ -14,6 +14,9 @@
 Route::group(['namespace' => 'Front'], function () {
 
     Route::get('/', 'MainController@index')->name('front');
+
+    Route::get('/requests/create', 'RequestsController@create')->name('front.request.create');
+    Route::post('/requests/create', 'RequestsController@store')->name('front.request.store');
 });
 
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {
